@@ -1,3 +1,76 @@
+/*      COLORS       */
+:root {
+    /* reds */
+    --cherry: #990F02;
+    --jam: #60100B;
+    --apple: #A91B0D;
+    --sangria: #5E1916;
+    --blush: #BC544B;
+    /* oranges */
+    --tangerine: #FA8128;
+    --rust: #8D4004;
+    --ginger: #BE5504;
+    --honey: #EC9706;
+    --cantaloupe: #FDA172;
+    /* yellows */
+    --beige: #EEDC9A;
+    --macaroon: #F9E076;
+    --oat: #DFC98A;
+    --latte: #E7C27D;
+    --sand: #E7C27D;
+    /* greens */
+    --juniper: #3A5311;
+    --sage: #728C69;
+    --mint: #99EDC3;
+    --pistacchio: #B2D3C2;
+    --croco: #607D3B;
+    /* blues */
+    --sky: #63C5DA;
+    --teal: #48AAAD;
+    --aegean: #1F456E;
+    --denim: #151E3D;
+    --stone: #59788E;
+    /* purples */
+    --mauve: #7A4988;
+    --plum: #601A35;
+    --grape: #663046;
+    --rasin: #290916;
+    --violet: #700193;
+    /* pinks */
+    --pink: #F699CD;
+    --punch: #F25278;
+    --lemonade: #FCBACB;
+    --rosewood: #9E4244;
+    --watermelon: #FE7F9C;
+    /* browns */
+    --mocha: #3C280D;
+    --peanut: #795C34;
+    --tortilla: #9A7B4F;
+    --walnut: #432616;
+    --caramel: #65350F;
+    /* greys */
+    --gray: #808080;
+    --iron: #322D31;
+    --cloud: #C5C6D0;
+    --coin: #9897A9;
+    --lead: #3F3F4E;
+    /* whites */
+    --frost: #FCFBFC;
+    --rice: #FAF5EF;
+    --salt: #F8EEEC;
+    --ivory: #FDF6E4;
+    --alabaster: #FEF9F3;
+}
+
+/*  STANDART STYLE */
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
 body {
     box-sizing: border-box;
     margin: 0;
@@ -48,4 +121,28 @@ nav a {
 .container {
    margin: 30px;
 }
+
+/*  CONTENT STYLE */
+
+/*      COLOR SECTION       */
+
+.box-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.color-box {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.color-block {
+    background-color: blue;
+    width: 15%;
+    text-align: center;
+    border-radius: 5px;
+}
+
 
