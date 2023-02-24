@@ -1,3 +1,4 @@
+/* 🌈 colors section */
 const colors = {
     red: {
         cherry: "#990F02",
@@ -83,17 +84,26 @@ for (let color in colors) {
     let groupColor = document.createElement("div");
     // add classes
     groupColor.className = "d-flex color-box";
-    boxColors.appendChild(groupColor)
+    boxColors.appendChild(groupColor);
 
     for (const [key, value] of Object.entries(colors[color])) {
         console.log(`${key}: ${value}`);
         let colorUnit = document.createElement("div");
         colorUnit.className = "color-block";
 
+        /* color title */
         let colorUnitTitle = document.createElement("h4");
         colorUnitTitle.textContent = key;
-        colorUnit.appendChild(colorUnitTitle)
+        colorUnit.appendChild(colorUnitTitle);
+        /* color subtitle */
+        let colorUnitSubtitle = document.createElement("p");
+        colorUnitSubtitle.textContent = value;
+        colorUnit.appendChild(colorUnitSubtitle);
+        /* color block background */
         colorUnit.style.backgroundColor = value;
-        groupColor.appendChild(colorUnit)
+        groupColor.appendChild(colorUnit);
     }
 }
+
+/* ✍️ fonts section */
+const boxFonts = document.getElementById("box-fonts");
