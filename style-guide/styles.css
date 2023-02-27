@@ -15,7 +15,77 @@ body {
     color: #e3e3e3;
 }
 
-/*  HEADER STYLE */
+/** FONTS **/ 
+@font-face {
+    font-family: DmSans;
+    src: url(./assets/fonts/DM_Sans/DMSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: WorkSans;
+    src: url(./assets/fonts/Work_Sans/WorkSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Gloock;
+    src: url(./assets/fonts/Gloock/Gloock-Regular.ttf);
+}
+
+@font-face {
+    font-family: Playfair;
+    src: url(./assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+.playfair-display {
+    font-family: Playfair;
+}
+
+@font-face {
+    font-family: Quicksand;
+    src: url(./assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf);
+}
+
+.quicksand {
+    font-family: Quicksand;
+}
+
+@font-face {
+    font-family: Shantell;
+    src: url(./assets/fonts/Shantell_Sans/ShantellSans-VariableFont_BNCE\,INFM\,SPAC\,wght.ttf);
+}
+
+.shantell-sans {
+    font-family: Shantell;
+}
+
+@font-face {
+    font-family: Asap;
+    src: url(./assets/fonts/Asap/Asap-VariableFont_wdth\,wght.ttf);
+}
+
+.asap {
+    font-family: Asap;
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(./assets/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf);
+}
+
+.open-sans {
+    font-family: OpenSans;
+}
+
+@font-face {
+    font-family: RobotoMono;
+    src: url(./assets/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf);
+}
+
+.roboto-mono {
+    font-family: RobotoMono;
+}
+
+/**  HEADER STYLE **/
 header {
     padding: 30px;
     text-align: center;
@@ -23,6 +93,12 @@ header {
     position: relative;
     background: rgba(0,0,0,0.5);
     border-radius: 10px;
+}
+
+header h1 {
+    font-family: DmSans;
+    letter-spacing: 1.7px;
+    font-size: 4.2em;
 }
 
 #bg-video {
@@ -58,13 +134,27 @@ nav a {
    margin: 30px;
 }
 
-/*  CONTENT STYLE */
+/* *  CONTENT STYLE * */
 
 /*      COLOR SECTION       */
 
 .box-content {
     display: flex;
     flex-direction: column;
+}
+
+.box-content h2 {
+    font-family: Gloock;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.box-content h3 {
+    font-family: WorkSans, sans-serif;
+    font-size: 2.3em;
+    font-weight: 500;
+    letter-spacing: 1.5px;
 }
 
 .color-box {
@@ -75,8 +165,28 @@ nav a {
 .color-block {
     background-color: blue;
     width: 18%;
+    border-radius: 6px;
     text-align: center;
-    border-radius: 5px;
+    font-family: WorkSans, sans-serif;
 }
 
+.color-block h4 {
+    font-size: 2em;
+    font-weight: 300;
+}
 
+.color-block p {
+    font-weight: 400;
+}
+
+/**      FONT SECTION       **/
+
+.fontUnit {
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.font-title {
+    text-transform: capitalize;
+}

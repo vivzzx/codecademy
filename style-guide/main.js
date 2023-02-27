@@ -75,7 +75,7 @@ const colors = {
 const boxColors = document.getElementById("box-colors");
 
 for (let color in colors) {
-    console.log(`${color} ---------------------`);
+    //console.log(`${color} ---------------------`);
     // title and text of each group of colors
     let colorTitle = document.createElement("h3");
     colorTitle.textContent =`Shades of ${color}`;
@@ -87,7 +87,7 @@ for (let color in colors) {
     boxColors.appendChild(groupColor);
 
     for (const [key, value] of Object.entries(colors[color])) {
-        console.log(`${key}: ${value}`);
+        //console.log(`${key}: ${value}`);
         let colorUnit = document.createElement("div");
         colorUnit.className = "color-block";
 
@@ -107,3 +107,48 @@ for (let color in colors) {
 
 /* ✍️ fonts section */
 const boxFonts = document.getElementById("box-fonts");
+
+function titleEdit(title) {
+    if (title.includes("-")) {
+        console.log("tem - aqui: ", title);
+        let newTitle = title.replace("-", " ");
+        //let space = newTitle.indexOf(" ");
+        //newTitle[space + 1].toUpperCase();
+       // console.log("novo title: ", newTitle, space);
+        return newTitle;
+    }
+    return title;
+}
+
+const fontClasses = ["playfair-display", "quicksand", "shantell-sans", "asap", "open-sans", "roboto-mono"]
+const textDemo = "The quick brown fox jumps over the lazy dog."
+
+/** LOOP HERE **/
+fontClasses.map((font) => {
+    let fontUnit = document.createElement("div");
+    fontUnit.className = "fontUnit";
+    let fontTitle = document.createElement("h3");
+    let fontTitleEdit = titleEdit(font);
+    fontTitle.textContent = fontTitleEdit;
+    fontTitle.className = "font-title";
+    fontUnit.appendChild(fontTitle);
+    let txtDemoBox = document.createElement("div");
+    txtDemoBox.className = font;
+    let fontDemo1 = document.createElement("p");
+    let fontDemo2 = document.createElement("p");
+    let fontDemo3 = document.createElement("p");
+
+    fontDemo1.textContent = textDemo;
+    fontDemo2.textContent = textDemo;
+    fontDemo3.textContent = textDemo;
+
+    fontDemo2.style.fontWeight = "bold";
+    fontDemo3.style.fontStyle = "italic";
+
+    txtDemoBox.appendChild(fontDemo1);
+    txtDemoBox.appendChild(fontDemo2);
+    txtDemoBox.appendChild(fontDemo3);
+
+    fontUnit.appendChild(txtDemoBox);
+    boxFonts.appendChild(fontUnit);
+})
