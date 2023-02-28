@@ -180,11 +180,30 @@ nav a {
 }
 
 /**      FONT SECTION       **/
+#box-fonts {
+    display: flex;
+    flex-wrap: wrap;
+    /*gap: 10%;*/
+    row-gap: 3em;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 .fontUnit {
     border: 1px solid #e3e3e3;
-    border-radius: 5px;
-    padding: 15px;
+    border-radius: 10px;
+    padding: 25px;
+    min-width: 425px;
+    width: 42%;
+    text-align: center;
+    transition: .5s;
+}
+
+.fontUnit:hover {
+    background-color: #fff;
+    color: #1f1f1f;
+
 }
 
 .font-title {

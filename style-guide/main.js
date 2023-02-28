@@ -112,9 +112,6 @@ function titleEdit(title) {
     if (title.includes("-")) {
         console.log("tem - aqui: ", title);
         let newTitle = title.replace("-", " ");
-        //let space = newTitle.indexOf(" ");
-        //newTitle[space + 1].toUpperCase();
-       // console.log("novo title: ", newTitle, space);
         return newTitle;
     }
     return title;
