@@ -89,8 +89,8 @@ for (let color in colors) {
     for (const [key, value] of Object.entries(colors[color])) {
         //console.log(`${key}: ${value}`);
         let colorUnit = document.createElement("div");
+        //colorUnit.className = "color-block";
         colorUnit.className = "color-block";
-
         /* color title */
         let colorUnitTitle = document.createElement("h4");
         colorUnitTitle.textContent = key;
@@ -105,12 +105,12 @@ for (let color in colors) {
     }
 }
 
-/* ✍️ fonts section */
+/** ✍️ fonts section **/
 const boxFonts = document.getElementById("box-fonts");
 
 function titleEdit(title) {
     if (title.includes("-")) {
-        console.log("tem - aqui: ", title);
+        //console.log("tem - aqui: ", title);
         let newTitle = title.replace("-", " ");
         return newTitle;
     }
@@ -120,7 +120,6 @@ function titleEdit(title) {
 const fontClasses = ["playfair-display", "quicksand", "shantell-sans", "asap", "open-sans", "roboto-mono"]
 const textDemo = "The quick brown fox jumps over the lazy dog."
 
-/** LOOP HERE **/
 fontClasses.map((font) => {
     let fontUnit = document.createElement("div");
     fontUnit.className = "fontUnit";
@@ -149,3 +148,81 @@ fontClasses.map((font) => {
     fontUnit.appendChild(txtDemoBox);
     boxFonts.appendChild(fontUnit);
 })
+
+/** ✍️ text styles section **/
+const textStyles = [
+    {
+        type: "h1",
+        title: "H1: Main page heading",
+        weight: "700 (bold)",
+        size: "26px",
+        family: "Playfair Display",
+    },
+    {
+        type: "h2",
+        title: "H2: Subheading",
+        weight: "500",
+        size: "18px",
+        family: "Nunito Sans",
+    },
+    {
+        type: "p",
+        title: "P: Paragraph text",
+        weight: "400 (regular)",
+        size: "14px",
+        family: "Nunito Sans",
+    }
+]
+
+const textStylesFonts = [
+    {
+        h1: "playfair-display",
+        h2: "open-sans",
+        p: "open-sans",
+    },
+    {
+        h1: "shantell-sans",
+        h2: "asap",
+        p: "quicksand",
+    },
+    {
+        h1: "open-sans",
+        h2: "quicksand",
+        p: "roboto-mono",
+    }
+]
+
+const boxStyles = document.getElementById("box-styles");
+
+const createBlockStyle = (style, counter) => {
+    let styleContainer = document.createElement("div");
+    let typeBlock = style.type;
+    let styleTitle = document.createElement(style.type);
+    styleTitle.textContent = style.title;
+    styleTitle.className = textStylesFonts[counter][typeBlock];
+    styleContainer.appendChild(styleTitle);
+    let styleList = document.createElement("ul");
+    let item1 = document.createElement("li");
+    item1.textContent = "Font-weight: " + style.weight;
+    styleList.appendChild(item1);
+    let item2 = document.createElement("li");
+    item2.textContent = "Font-size: " + style.size;
+    styleList.appendChild(item2);
+    let item3 = document.createElement("li");
+    item3.textContent = "Font-family: " + textStylesFonts[counter][typeBlock];
+    styleList.appendChild(item3);
+    styleContainer.appendChild(styleList)
+
+    return styleContainer;
+}
+
+for (let index = 0; index < 3; index++) {
+    let styleUnit = document.createElement("div");
+    styleUnit.className = "styleUnit";
+    for (let i = 0; i < 3; i++) {
+        let newStyle = createBlockStyle(textStyles[i], index);
+        styleUnit.appendChild(newStyle);
+    }
+    boxStyles.appendChild(styleUnit)
+}
+

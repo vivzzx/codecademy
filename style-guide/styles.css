@@ -85,6 +85,10 @@ body {
     font-family: RobotoMono;
 }
 
+.dark-txt {
+    color: #1f1f1f;
+}
+
 /**  HEADER STYLE **/
 header {
     padding: 30px;
@@ -189,7 +193,6 @@ nav a {
     align-items: center;
 }
 
-
 .fontUnit {
     border: 1px solid #e3e3e3;
     border-radius: 10px;
@@ -203,9 +206,43 @@ nav a {
 .fontUnit:hover {
     background-color: #fff;
     color: #1f1f1f;
-
 }
 
 .font-title {
     text-transform: capitalize;
+}
+
+/**      TEXT STYLES SECTION       **/
+#box-styles {
+    display: flex;
+    justify-content: space-between;
+}
+
+.styleUnit {
+    border: 1px solid #e3e3e3;
+    border-radius: 10px;
+    padding: 25px;
+    min-width: 280px;
+    width: 28%;
+    transition: .5s;
+}
+
+.styleUnit:hover {
+    background-color: #fff;
+    color: #1f1f1f;
+}
+
+.styleUnit h1 {
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.styleUnit h2 {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.styleUnit h3 {
+    font-weight: 400;
+    font-size: 14px;
 }
