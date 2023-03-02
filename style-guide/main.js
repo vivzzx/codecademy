@@ -96,6 +96,7 @@ for (let color in colors) {
     // title and text of each group of colors
     let colorTitle = document.createElement("h3");
     colorTitle.textContent =`Shades of ${color}`;
+    colorTitle.className = "shades-title"
     boxColors.appendChild(colorTitle);
     // space to group of colors
     let groupColor = document.createElement("div");

@@ -1,4 +1,4 @@
-/*  STANDART STYLE */
+/**  STANDART STYLE **/
 .d-flex {
     display: flex;
 }
@@ -104,14 +104,14 @@ header {
 header h1 {
     font-family: Gloock;
     letter-spacing: 10px;
-    font-size: 4.2em;
+    font-size: 9.5vw;
 }
 
 header p {
     font-family: WorkSans, sans-serif;
     letter-spacing: 5px;
     font-weight: 300;
-    font-size: 2em;
+    font-size: 3.1vw;
 }
 
 #bg-video {
@@ -163,18 +163,17 @@ nav a {
 
 .box-content h2 {
     font-family: Gloock;
-    font-size: 3em;
     font-weight: bold;
 }
 
 .h2-color {
     color: #EC9706;
     letter-spacing: 10px;
+    font-size: 5.5vw;
 }
 
 .box-content h3 {
     font-family: WorkSans, sans-serif;
-    font-size: 2.3em;
     font-weight: 500;
     letter-spacing: 1.5px;
 }
@@ -191,12 +190,17 @@ nav a {
     font-family: WorkSans, sans-serif;
 }
 
+.shades-title {
+    font-size: 3vw;
+}
+
 .color-block h4 {
-    font-size: 2em;
+    font-size: 2.9vw;
     font-weight: 300;
 }
 
 .color-block p {
+    font-size: 2vw;
     font-weight: 400;
 }
 
@@ -227,6 +231,7 @@ nav a {
 
 .font-title {
     text-transform: capitalize;
+    font-size: 4vw;
 }
 
 /**      TEXT STYLES SECTION       **/
@@ -276,4 +281,98 @@ footer a {
     text-decoration: none;
     color: #EC9706;
     font-weight: bold;
+}
+
+/** RESPONSIVE **/
+
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: 950px) {
+    #box-styles {
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+    .fontUnit {
+        min-width: 35vw;
+        font-size: 0.7em;
+    }
+    .font-title {
+        font-size: 30px;
+    }
+    .styleUnit {
+        width: 100%;
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 810px) {
+    .container {
+        padding: 10px;
+    }
+    nav a {
+        font-size: 14px;
+    }
+    .fontUnit {
+        width: 100%;
+        min-width: 100px;
+        font-size: 0.7em;
+    }
+    .font-title h3 {
+        font-size: 15px;
+    }
+    #box-styles {
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+    .styleUnit {
+        width: 100%;
+    }
+    footer {
+        font-size: 12px;
+    }
+}
+  
+
+  
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1400px) {
+    .out-container {
+        display: flex;
+        flex-direction: column;
+
+    }
+    .hero {
+        width: 1300px;
+    }
+    header h1 {
+        font-size: 150px;
+    }
+    header p {
+        font-size: 42px;
+    }
+    main {
+        background-color: #1f1f1f;
+        width: 1300px;
+        margin: auto;
+    }
+
+    .shades-title {
+        font-size: 42px;
+    }
+    .color-block h4 {
+        font-size: 38px;
+    }
+    .color-block p {
+        font-size: 25px;
+    }
+
+    .font-title {
+        font-size: 50px;
+    }
+
+    .h2-color {
+        font-size: 60px;
+    }
+    footer {
+        text-align: center;
+    }
 }
