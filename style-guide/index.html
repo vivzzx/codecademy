@@ -8,38 +8,43 @@
     <title>My Website Style Guide</title>
 </head>
 <body>
-    <div class="container">
+    <div class="">
         <header>
             <video id="bg-video" autoplay loop muted poster="">
                 <source src="./assets/video/Pexels Videos 1722882.mp4" type="video/mp4">
                 
             </video>
-            <h1>My Website Style Guide</h1>
-            <p>This is my style guide aloka</p>
-            <nav>
-                <ul>
-                    <li><a href="#color">Colors</a></li>
-                    <li><a href="#fonts">Fonts</a></li>
-                    <li><a href="#styles">Text Styles</a></li>
-                    <li><a href="#float">Float</a></li>
-                </ul>
-            </nav>
+            <div>
+                <h1>My Website Style Guide</h1>
+                <p>My favorite colors and fonts demo</p>
+                <nav>
+                    <ul class="d-flex">
+                        <li><a href="#colors">Colors</a></li>
+                        <li><a href="#fonts">Fonts</a></li>
+                        <li><a href="#styles">Text Styles</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header> 
-        <main>
+        <main class="container">
             <article class="box-content" id="colors">
-                <h2>Colors</h2>
+                <h2 class="h2-color">Colors</h2>
                 <div class="flex-column" id="box-colors">
                 </div>
             </article>
             <article class="box-content" id="fonts">
-                <h2>Fonts</h2>
+                <h2 class="h2-color">🔻 Fonts</h2>
                 <div id="box-fonts"></div>
             </article>
             <article class="box-content" id="styles">
-                <h2>Text Styles</h2>
+                <h2 class="h2-color">🔻 Text Styles</h2>
                 <div id="box-styles"></div>
             </article>
         </main>
+        <footer>
+            <h4>Project created for Front-End Path - Codecademy</h4>
+            <p>Made with ❤️ by <a href="https://vivzzx.github.io/">Viv Galati</a> © 2023</p>
+        </footer>
     </div>
     <script src="main.js"></script>
 </body>

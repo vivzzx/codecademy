@@ -72,6 +72,23 @@ const colors = {
     }
 }
 
+function isColorDark(colorHex) {
+    // Converter cor hex para RGB
+    let r = parseInt(colorHex.substr(1,2),16);
+    let g = parseInt(colorHex.substr(3,2),16);
+    let b = parseInt(colorHex.substr(5,2),16);
+    
+    // Calcular brilho relativo da cor
+    let brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    
+    // Avaliar se a cor é clara ou escura
+    if (brightness < 128) {
+      return true; // Cor escura
+    } else {
+      return false; // Cor clara
+    }
+}
+  
 const boxColors = document.getElementById("box-colors");
 
 for (let color in colors) {
@@ -89,8 +106,10 @@ for (let color in colors) {
     for (const [key, value] of Object.entries(colors[color])) {
         //console.log(`${key}: ${value}`);
         let colorUnit = document.createElement("div");
+        let checkDark = isColorDark(value);
         //colorUnit.className = "color-block";
-        colorUnit.className = "color-block";
+        colorUnit.className = checkDark ? "color-block" : "color-block dark-txt"
+
         /* color title */
         let colorUnitTitle = document.createElement("h4");
         colorUnitTitle.textContent = key;
@@ -226,3 +245,6 @@ for (let index = 0; index < 3; index++) {
     boxStyles.appendChild(styleUnit)
 }
 
+/* video time rate */
+const vid = document.getElementById("bg-video");
+vid.playbackRate = 0.4;

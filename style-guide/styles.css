@@ -91,18 +91,27 @@ body {
 
 /**  HEADER STYLE **/
 header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 30px;
     text-align: center;
-    height: 60vh;
+    height: 100vh;
     position: relative;
-    background: rgba(0,0,0,0.5);
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
 }
 
 header h1 {
-    font-family: DmSans;
-    letter-spacing: 1.7px;
+    font-family: Gloock;
+    letter-spacing: 10px;
     font-size: 4.2em;
+}
+
+header p {
+    font-family: WorkSans, sans-serif;
+    letter-spacing: 5px;
+    font-weight: 300;
+    font-size: 2em;
 }
 
 #bg-video {
@@ -115,27 +124,30 @@ header h1 {
     position: absolute;
     object-fit: cover;
     z-index: -1;
-    border-radius: 10px;
 }
 
-/*  NAV STYLE */
+/**  NAV STYLE **/
 nav ul {
     list-style-type: none;
+    justify-content: space-evenly;
+    background-color: #111111a8;
+    padding: 10px;
+    font-family: DmSans, sans-serif;
 }
 
 nav li {
     display: inline;
-    
 }
 
 nav a {
     text-decoration: none;
-    color: mediumorchid;
+    color: #EC9706;;
+    font-size: 1.1em;
 }
 
 /* CONTENT STYLE */
 .container {
-   margin: 30px;
+   padding: 50px;
 }
 
 /* *  CONTENT STYLE * */
@@ -145,13 +157,19 @@ nav a {
 .box-content {
     display: flex;
     flex-direction: column;
+    border-top: 1px dashed #ec98065d;
+    padding-bottom: 70px;
 }
 
 .box-content h2 {
     font-family: Gloock;
     font-size: 3em;
     font-weight: bold;
-    letter-spacing: 5px;
+}
+
+.h2-color {
+    color: #EC9706;
+    letter-spacing: 10px;
 }
 
 .box-content h3 {
@@ -167,7 +185,6 @@ nav a {
 }
 
 .color-block {
-    background-color: blue;
     width: 18%;
     border-radius: 6px;
     text-align: center;
@@ -245,4 +262,18 @@ nav a {
 .styleUnit h3 {
     font-weight: 400;
     font-size: 14px;
+}
+
+/** FOOTER **/
+footer {
+    padding: 20px 50px;
+    background-color: #322d31;
+    letter-spacing: 2px;
+    border-top: 1px dashed #e3e3e32c;
+}
+
+footer a {
+    text-decoration: none;
+    color: #EC9706;
+    font-weight: bold;
 }
