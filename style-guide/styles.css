@@ -161,15 +161,12 @@ nav a {
     padding-bottom: 70px;
 }
 
-.box-content h2 {
-    font-family: Gloock;
-    font-weight: bold;
-}
-
 .h2-color {
     color: #EC9706;
     letter-spacing: 10px;
     font-size: 5.5vw;
+    font-family: Gloock;
+    font-weight: bold;
 }
 
 .box-content h3 {
