@@ -1,0 +1,2 @@
+Project Goals
+We created an interactive terminal game for this assignment. on the scenario, the player has misplaced their hat on a field full of holes and must find it without slipping into one of the holes or leaving the field.

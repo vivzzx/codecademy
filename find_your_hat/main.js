@@ -6,6 +6,7 @@ const hat = '^'.magenta;
 const hole = 'O';
 const fieldCharacter = '░';
 const pathCharacter = '*'.green;
+const actualPathChar = '*'.brightMagenta;
 
 class Field {
     constructor(fieldArray) {
@@ -30,8 +31,10 @@ class Field {
         }
     }
 
+    // DO A SETUP TO GENERATE POSIBLE MAPS 
     static generateField(width, height) {
         const matrix = [];
+        this.hatPos(width, height) 
         let symbol = (num) => {
             let result;
             switch (num) {
@@ -56,14 +59,16 @@ class Field {
                 let num = Math.floor(Math.random() * 3);
                 if (w == 0 && index == 0) {
                     row[w] = fieldCharacter;
-                } else {
+                } else if (w === Field.hatX && index === Field.hatY) {
+                    row[w] = fieldCharacter;
+                }
+                else {
                     row[w] = symbol(num);
                 } 
             }
             matrix.push(row);
-        }
-        this.hatPos(width, height) 
-        matrix[Field.hatY][Field.hatX] = fieldCharacter;
+        } 
+        //matrix[Field.hatY][Field.hatX] = fieldCharacter;
         return matrix;
     }
 
@@ -82,7 +87,6 @@ class Field {
     }
 
     checkPlay() {
-        //console.log("\tcheck play: ", this.field[Field.posY][Field.posX])
         if (Field.posX === 0 && Field.posY === 0) {
             this.field[0][0] = pathCharacter;
         } else if (Field.posX < 0 || Field.posY < 0 || this.field[Field.posY][Field.posX] === undefined) {
@@ -96,24 +100,27 @@ class Field {
             this.print()
             //questionLine(Field.end);
         } else if (Field.posY === Field.hatY  && Field.posX === Field.hatX) {
-            console.log("Congrats! You found your hat 🎩".green.bold);
-            term.brightYellow.bold.blink("\t🏆 You win! 🏆\n\n");
+            console.log("Congrats! You found your hat 🎩\n".green.bold);
+            setTimeout(() => {
+                term.brightYellow.bold.blink("\t🏆 You win! 🏆\n\n");
+            }, 1000)
+        
             this.field[Field.posY][Field.posX] = hat;
             Field.end = true;
             this.print()
         } else {
-            console.log("status: \n")
+            this.field[Field.posY][Field.posX] = pathCharacter.red;
         }
     }
 
     print() {
-        //console.log("pos x: ", Field.posX, "pos y: ", Field.posY)
         if (!Field.end) {
-            this.field[Field.posY][Field.posX] = pathCharacter;
+            this.field[Field.posY][Field.posX] = actualPathChar;
         }
         this.field.map(item => {
             console.log(item.join(' '))
         })
+        this.field[Field.posY][Field.posX] = pathCharacter;
         console.log("\n")
         questionLine(Field.end);
     }
@@ -147,7 +154,19 @@ const readline = require('readline').createInterface({
 
 const questionLine = (end) => {
     if (end) {
-        //console.log("\n fechou readline")
+        /*  **SETUP TO PLAY AGAIN**
+
+        term("Do you want to play again? [Y|n]\n")
+        term.yesOrNo( {yes: ['y' , 'ENTER'], no: ['n']}, function(error, result) {
+            if (result) {
+                term.green("Let's play again!");
+                Field.end = false;
+                term.clear()
+                console.log(field3.start())
+            } else {
+                readline.close();
+            }
+        } ) */
         readline.close();
     } else {
         readline.question('☝️ Which way?\n'.green.bold, direction => {
@@ -170,7 +189,6 @@ const questionLine = (end) => {
         })
     }
 } 
-//questionLine(Field.end)
 
 let field1 = new Field([
     ['*', '░', 'O'],
@@ -185,5 +203,6 @@ let field1 = new Field([
 
 //let testGen = Field.generateField(3, 5)
 let field2 = new Field(Field.generateField(5, 8));
+//let field3 = new Field(Field.generateField(9, 8));
 console.log(field2.start())
 //console.log(testGen)
