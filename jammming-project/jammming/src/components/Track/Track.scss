@@ -1,17 +1,50 @@
 @import '../colors/colors';
 
 .track-container {
-    font-family: 'Open Sans', sans-serif;
-    padding: 2px;
-    border-bottom: 1px solid white;
+    display: flex;
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid $violetA4;
 
-    .track-title {
-        font-weight: 700;
-        letter-spacing: 1px;
+    .track-txt {
+        width: 90%;
+        font-family: 'Open Sans', sans-serif;
+        padding: 10px;
+        
+        .track-title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            //background-color: wheat;
+        }
+        .track-artist {
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: .9px;
+            font-size: 14px;
+            //background-color: aqua;
+            //color: $ash-gray;
+            color: $periwinkle;
+        }
     }
-    .track-artist {
-        font-weight: 300;
-        letter-spacing: 1.2px;
-        color: $ash-gray;
+    
+    .plus-container {
+        padding: 10px;
+        height: 20px;
+        align-self: center;
+            
+        .plus-btn {
+            width: 20px;
+            height: 20px;
+            color: white;
+            //fill: $periwinkle;
+            fill: $violet11;
+
+            &:hover {
+                fill: $naples-yellow;
+            }
+        }
     }
 }
+

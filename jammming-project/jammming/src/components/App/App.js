@@ -1,23 +1,33 @@
+import React, {useState, useEffect, createConnection} from 'react'
 import './App.scss';
-import SearchBar from "../SearchBar/SearchBar"
-import Playlist from "../Playlist/Playlist";
-import SearchResults from "../SearchResults/SearchResults";
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import Home from '../Home/Home';
+import Login from "../Login/Login"
+import Starter from '../Starter/Starter';
+import { generateAcessToken, checkLogin } from '../../assets/helpers';
 
 function App() {
-  return (
-    <div className="App">
-        <header className="App-header">
-          <h1>Jammming</h1>
-        </header>
-        <main>
-          <SearchBar />
-          <section className="containerLists">
-            <SearchResults />
-            <Playlist />
-          </section>
-        </main>
-    </div>
+  const [isLogged, setIsLogged] = useState(false)
+  const navigate = useNavigate()
+  useEffect(() => {
+    //generateAcessToken()
+    setIsLogged(checkLogin())
 
+    console.log("app is logged:", isLogged)
+
+  }, [isLogged])
+
+  return (
+      <>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/app" element={App.js} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/starter" element={<Starter />} />
+        </Routes>
+        
+      </>
   );
 }
 

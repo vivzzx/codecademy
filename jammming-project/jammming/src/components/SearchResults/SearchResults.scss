@@ -1,9 +1,13 @@
 @import '../colors/colors';
 
 .container-results {
-    width: 45%;
+    width: 100%;
     border-radius: 30px;
     
     background-color: $rich-black-2;
     color: white;
+
+    h3 {
+        margin-left: 15px;
+    }
 }
