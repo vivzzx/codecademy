@@ -1,17 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './SearchResults.scss'
 import TrackList from '../TrackList/TrackList'
+import Track from '../Track/Track'
 
 const SearchResults = (props) => {
-    let results
-    //console.log('propssss',props)
-
+    const [results, setResults] = useState('');
+    const [searched, setSearched] = useState(false)
 
     const getData = async () => {
         const url = 'https://api.spotify.com'
         const queryParams = '/v1/search?q='
         const wordQuery = props.word
-        const types = '&type=artist%2Ctrack&limit=10'
+        //const types = '&type=artist%2Ctrack&limit=10'
+        const types = '&type=track&limit=10'
         const endpoint = url + queryParams + wordQuery + types
 
         try {
@@ -20,12 +21,14 @@ const SearchResults = (props) => {
                     'Authorization': 'Bearer ' + localStorage.getItem('access_token')
                 }
             })
-         
             if (response.ok) {
                 const jsonResponse = await response.json()
                 // code to execute with jsonResponse
                 console.log(jsonResponse)
-                results = jsonResponse
+                setResults(jsonResponse.tracks.items)
+                props.callResults(results)
+
+                //console.log("results pra retornar", results)
             }
         }
         catch (error) {
@@ -33,44 +36,17 @@ const SearchResults = (props) => {
         }
     }
 
-    if(props.word !== ''){
+    if(props.word !== '' && !searched){
         getData()
-    }
-    /*
-    const results = [
-        {
-            song: 'Watermelon Sugar',
-            artist: 'Harry Styles',
-            album: 'Fine Line',
-        },
-        {
-            song: 'Stand by Me',
-            artist: 'Oasis',
-            album: 'Be Here Now',
-        },
-        {
-            song: 'Ur so beautiful',
-            artist: 'Grace VanderWaal',
-            album: 'Ur so beautiful',
-        }
-    ]*/
+        setSearched(true)
+
+    } 
+
 
     return (
-        <div className='container-results'>
-            <h3>Results</h3>
-            <div>
-                {getData}
-                <TrackList results={results} />
-            </div>
-        </div>
+        <>
+        </>
     )
 }
 
 export default SearchResults
-
-/*
-<Track idTrack={results.s001} add2Playlist={add2Playlist} />
-<Track idTrack={results.s002} add2Playlist={add2Playlist} />
-<Track idTrack={results.s003} add2Playlist={add2Playlist} />
-
-*/

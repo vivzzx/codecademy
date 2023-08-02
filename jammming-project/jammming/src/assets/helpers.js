@@ -1,5 +1,6 @@
 const clientId = '7bd8ad62504346b09bb6c0eb3d0a7643'
 const redirectUri = "http://localhost:3000/starter"
+const url = 'https://api.spotify.com'
 let codeVerifier = generateRandomString(128);
 let access_token = ""
 
@@ -126,4 +127,28 @@ const startGenerate = () => {
   })
 }
 
-export {generateAcessToken, checkIsCode, startGenerate, checkIsToken, checkLogin}
+const getTracks = async (word) => {
+  const queryParams = '/v1/search?q='
+  //const types = '&type=artist%2Ctrack&limit=10'
+  const types = '&type=track&limit=10'
+  const endpoint = url + queryParams + word + types
+
+  try {
+      const response = await fetch(endpoint, {
+          headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+          }
+      })
+      if (response.ok) {
+          const jsonResponse = await response.json()
+          console.log(jsonResponse)
+          return jsonResponse
+      }
+  }
+  catch (error) {
+      console.log(error)
+  }
+}
+
+
+export {generateAcessToken, checkIsCode, startGenerate, checkIsToken, checkLogin, getTracks}

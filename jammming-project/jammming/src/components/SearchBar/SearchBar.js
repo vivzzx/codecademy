@@ -1,9 +1,16 @@
 import React, {useState} from "react";
 import SearchResults from "../SearchResults/SearchResults";
+import TrackList from "../TrackList/TrackList";
 import "./SearchBar.scss";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [word, setWord] = useState('')
+
+    const handleClick = () => {
+        props.searchWord(word)
+        console.log("handleClick word: ", word)
+    }
+    
     return (
         <section className="search-box">
 
@@ -18,10 +25,11 @@ const SearchBar = () => {
                     id="musicSearch" />
                 <button
                     type="button"
-                    className="form-btn">Search</button>
+                    className="form-btn"
+                    onClick={handleClick}
+                    >Search</button>
             </form>
-            {/* arrumar essa parte aqui!!
-            <SearchResults word={word} /> */}
+           {/*<SearchResults word={word} />*/}
         </section>
     )
 }

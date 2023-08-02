@@ -1,11 +1,27 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import SearchBar from '../SearchBar/SearchBar'
+import TrackList from '../TrackList/TrackList';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist'
 import { generateAcessToken } from '../../assets/helpers';
 import './Home.scss'
 
 const Home = () => {
+    const [word, setWord] = useState('')
+    const [playlist, setPlaylist] = useState([])
+
+    
+    const searchWord = (word) => {
+        setWord(word)
+    }
+
+    const addPlaylist = (track) => {
+        if(!playlist.includes(track)){
+            setPlaylist((prevPlaylist) => [...prevPlaylist, track])
+            console.log("playlist no home:", playlist)
+        }
+    }
+
     useEffect(() => {
         generateAcessToken()
       }, [])
@@ -18,14 +34,14 @@ const Home = () => {
                 </header>
                 <main>
                     <div className='box-search'>
-                        <SearchBar />
+                        <SearchBar searchWord={searchWord} />
                     </div>
                     <section className="containerLists">
                         <div className='box-results box-list'>
-                            <SearchResults />
+                            <TrackList word={word} addPlaylist={addPlaylist} />
                         </div>
                         <div className='box-playlist box-list'>
-                            <Playlist />
+                            <Playlist playlist={playlist} />
                             <button className='save-btn'>SAVE TO SPOTIFY</button> 
                         </div>
                     </section>

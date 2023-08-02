@@ -13,8 +13,6 @@ function App() {
     //generateAcessToken()
     setIsLogged(checkLogin())
 
-    console.log("app is logged:", isLogged)
-
   }, [isLogged])
 
   return (
