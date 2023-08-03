@@ -18,8 +18,12 @@ const Home = () => {
     const addPlaylist = (track) => {
         if(!playlist.includes(track)){
             setPlaylist((prevPlaylist) => [...prevPlaylist, track])
-            console.log("playlist no home:", playlist)
+            //console.log("playlist no home:", playlist)
         }
+    }
+
+    const removePlaylist = (track) => {
+        setPlaylist(prevPlaylist => prevPlaylist.filter(item => item !== track))
     }
 
     useEffect(() => {
@@ -41,8 +45,7 @@ const Home = () => {
                             <TrackList word={word} addPlaylist={addPlaylist} />
                         </div>
                         <div className='box-playlist box-list'>
-                            <Playlist playlist={playlist} />
-                            <button className='save-btn'>SAVE TO SPOTIFY</button> 
+                            <Playlist playlist={playlist} removePlaylist={removePlaylist} /> 
                         </div>
                     </section>
                 </main>

@@ -2,7 +2,9 @@ const clientId = '7bd8ad62504346b09bb6c0eb3d0a7643'
 const redirectUri = "http://localhost:3000/starter"
 const url = 'https://api.spotify.com'
 let codeVerifier = generateRandomString(128);
-let access_token = ""
+let access_token = localStorage.getItem("access_token") ? localStorage.getItem("access_token") : ''
+//let playlistEndpoint = `/v1/users/${user_id}/playlists`
+
 
 const generateAcessToken = async () => {
   const urlParams = new URLSearchParams(window.location.search)
@@ -45,13 +47,92 @@ const generateAcessToken = async () => {
   
     const dataProfile = await responseProfile.json();
     //console.log("data aqui", dataProfile)
-    
+    //console.log("id aqui", user_id)
     return dataProfile
 
   } catch (error) { 
     //console.error('Error:', error);
   }
 }
+
+const createPlaylist = async (profile_id) => {
+  try {
+    const body = JSON.stringify({
+      "name": "Jamming Playlist",
+      "description": "A playlist made in Jamming App",
+      "public": false
+    })
+    const response = await fetch((`${url}/v1/users/${profile_id}/playlists`), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + access_token
+      },
+      body : body
+    })
+    if (response.ok) {
+      const jsonResponse = await response.json()
+      console.log("playlist criada aqui", jsonResponse)
+      const playlist_id = jsonResponse.id
+      return playlist_id
+      
+    }
+  throw new Error('Request Failed')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const saveTracksPlaylist = async (tracksUris, playlist_id) => {
+  try {
+    const body = JSON.stringify({
+      "uris": tracksUris,
+      "position": 0
+    })
+    console.log("body: ", body)
+    const response = await fetch((`${url}/v1/playlists/${playlist_id}/tracks`), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + access_token
+      },
+      body: body
+    })
+    if (response.ok) {
+      const jsonResponse = await response.json()
+      console.log("playlist snapshot, criado com sucesso", jsonResponse)
+      return jsonResponse
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const profileId = async () => {
+  try {
+    const responseProfile = await fetch('https://api.spotify.com/v1/me', {
+      headers: {
+        Authorization: 'Bearer ' + access_token
+      }
+    });
+  
+    const dataProfile = await responseProfile.json();
+    //console.log("data aqui", dataProfile)
+    return dataProfile.id
+
+  } catch (error) { 
+    //console.error('Error:', error);
+  }
+}
+
+const saveToPlaylist = async (trackUris) => {
+  const profile_id = await profileId()
+  const playlist_id = await createPlaylist(profile_id)
+  const tracksToSave = await saveTracksPlaylist(trackUris, playlist_id)
+  console.log("response tracks2save:", tracksToSave)
+}
+
 
 const checkIsCode = () => {
   const urlParams = new URLSearchParams(window.location.search)
@@ -108,7 +189,7 @@ async function generateCodeChallenge(codeVerifier) {
 const startGenerate = () => {
   generateCodeChallenge(codeVerifier).then(codeChallenge => {
     let state = generateRandomString(16);
-    let scope = 'user-read-private user-read-email';
+    let scope = 'user-read-private user-read-email playlist-modify-private';
   
     localStorage.setItem('code_verifier', codeVerifier);
   
@@ -141,7 +222,7 @@ const getTracks = async (word) => {
       })
       if (response.ok) {
           const jsonResponse = await response.json()
-          console.log(jsonResponse)
+          console.log("response tracks: ", jsonResponse)
           return jsonResponse
       }
   }
@@ -151,4 +232,4 @@ const getTracks = async (word) => {
 }
 
 
-export {generateAcessToken, checkIsCode, startGenerate, checkIsToken, checkLogin, getTracks}
+export {generateAcessToken, checkIsCode, startGenerate, checkIsToken, checkLogin, getTracks, saveToPlaylist, createPlaylist}
