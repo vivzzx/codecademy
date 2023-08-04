@@ -2,14 +2,15 @@
 
 .track-compo {
     width: 100%;
-    margin-top: 10px;
+    height: 90px;
+    margin: 5px 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
 
     .img-track {
-        width: 70px;
-        height: 70px;
+        width: 75px;
+        height: 75px;
     }
 }
 

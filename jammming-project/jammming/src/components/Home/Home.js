@@ -41,10 +41,10 @@ const Home = () => {
                         <SearchBar searchWord={searchWord} />
                     </div>
                     <section className="containerLists">
-                        <div className='box-results box-list'>
+                        <div className='box-list'>
                             <TrackList word={word} addPlaylist={addPlaylist} />
                         </div>
-                        <div className='box-playlist box-list'>
+                        <div className='box-list'>
                             <Playlist playlist={playlist} removePlaylist={removePlaylist} /> 
                         </div>
                     </section>

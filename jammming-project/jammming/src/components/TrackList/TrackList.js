@@ -29,17 +29,20 @@ const TrackList = (props) => {
 
     return (
         <div className='container-tracklist'>
-            <h3>Tracks</h3>
-
+            <div className='tracklist-title'>
+                <h3>Tracks</h3>
+            </div>
+            <div className='flex-playlist'>
                 {tracklist.map((item, index) => (
                     <div className='track-container' id={item.id}>
                         <Track item={item} key={index} />
                         {/* <div className='plus-container' onClick={()=>{props.track(item.id)}}> */}
                         <div className='btn-container' onClick={()=>{props.addPlaylist(item)}}>
-                            <p className='btn-simbol'>+</p>
+                            <p className='btn-simbol-add'>+</p>
                         </div>
                     </div>
                 ))}
+            </div>
         </div>
     )
       

@@ -55,10 +55,10 @@ const generateAcessToken = async () => {
   }
 }
 
-const createPlaylist = async (profile_id) => {
+const createPlaylist = async (profile_id, playlistTitle) => {
   try {
     const body = JSON.stringify({
-      "name": "Jamming Playlist",
+      "name": playlistTitle,
       "description": "A playlist made in Jamming App",
       "public": false
     })
@@ -126,9 +126,9 @@ const profileId = async () => {
   }
 }
 
-const saveToPlaylist = async (trackUris) => {
+const saveToPlaylist = async (trackUris, playlistTitle) => {
   const profile_id = await profileId()
-  const playlist_id = await createPlaylist(profile_id)
+  const playlist_id = await createPlaylist(profile_id, playlistTitle)
   const tracksToSave = await saveTracksPlaylist(trackUris, playlist_id)
   console.log("response tracks2save:", tracksToSave)
 }

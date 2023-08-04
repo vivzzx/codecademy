@@ -4,59 +4,83 @@
     box-sizing: border-box;
     padding: 10px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     width: 100%;
     height: 100%;
 
     color: white;
     background-color: $rich-black-2;
-    color: white;
-
     text-align: left;
     border-radius: 30px;
-    
-    h3 {
-        margin-left: 15px;
-    }
 
-    .track-container {
-        display: flex;
-        justify-content: space-around;
+    .tracklist-title {
+        height: 55px;
         align-items: center;
+        border-bottom: 1px solid $violetA8; 
 
-        margin-bottom: 10px;
-        border-bottom: 1px solid $violetA4;
+        //padding: 10px 15px;;
 
-        .track-txt {
-        width: 100%;
-        font-family: 'Open Sans', sans-serif;
-        padding: 10px;
-        
-            .track-title {
-                margin: 0;
-                font-size: 15px;
-                font-weight: 700;
-                letter-spacing: .5px;
-            }
-            .track-artist {
-                margin: 0;
-                font-weight: 400;
-                letter-spacing: .8px;
-                font-size: 11px;
-                color: $periwinkle;
-            }
-        }
-        .btn-container {
-            align-self: center;
-            text-align: center;
-                
-            .btn-simbol {
-                width: 22px;
-                height: 22px;
-                background-color: $violet11;
-                border-radius: 50%;
+        h3 {
+            margin: 10px;
+            padding: 5px 0;
+            
+            font-family: Inter, sans-serif;
+            font-weight: 800;
+            letter-spacing: 1px;
     
-                &:hover {
-                    background-color: $naples-yellow;
+            
+        }
+    }
+    
+    .flex-playlist {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+
+        .track-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px solid $violetA4;
+            padding: 0 10px;
+
+            .track-txt {
+            width: 100%;
+            font-family: 'Open Sans', sans-serif;
+            padding: 2px 15px 2px 20px;
+            
+                .track-title {
+                    margin: 0;
+                    font-size: 15px;
+                    font-weight: 700;
+                    letter-spacing: .5px;
+                }
+                .track-artist {
+                    margin: 0;
+                    font-weight: 400;
+                    letter-spacing: .8px;
+                    font-size: 11px;
+                    color: $periwinkle;
+                }
+            }
+            .btn-container {
+                align-self: center;
+                text-align: center;
+                    
+                .btn-simbol-add {
+                    width: 22px;
+                    height: 22px;
+                    color: $rich-black-2;
+                    background-color: $violet11;
+                    border-radius: 50%;
+        
+                    &:hover {
+                        background-color: $naples-yellow;
+                    }
                 }
             }
         }
