@@ -7,6 +7,7 @@ const TrackList = (props) => {
     //const [word, setWord] =  useState('')
     const [tracklist, setTracklist] = useState([]) 
     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const callResults = async () => {
         const tracks = await getTracks(props.word)
         setTracklist(tracks.tracks.items)
@@ -21,7 +22,7 @@ const TrackList = (props) => {
 
         }
         
-    }, [props.word]);
+    }, [callResults, props.word]);
 
     return (
         <div className='container-tracklist'>
