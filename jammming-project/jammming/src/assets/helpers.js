@@ -1,5 +1,6 @@
 const clientId = '7bd8ad62504346b09bb6c0eb3d0a7643'
-const redirectUri = "http://localhost:3000/starter"
+const redirectUri = `${window.location}/starter`
+//const redirectUri = "http://localhost:3000/starter"
 const url = 'https://api.spotify.com'
 let codeVerifier = generateRandomString(128);
 let access_token = localStorage.getItem("access_token") ? localStorage.getItem("access_token") : ''
