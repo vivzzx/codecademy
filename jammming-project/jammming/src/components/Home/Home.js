@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import SearchBar from '../SearchBar/SearchBar'
 import TrackList from '../TrackList/TrackList';
-import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist'
 import { generateAcessToken } from '../../assets/helpers';
 import './Home.scss'

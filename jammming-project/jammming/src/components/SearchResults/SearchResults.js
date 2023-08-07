@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './SearchResults.scss'
-import TrackList from '../TrackList/TrackList'
-import Track from '../Track/Track'
 
 const SearchResults = (props) => {
     const [results, setResults] = useState('');

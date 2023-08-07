@@ -64,7 +64,7 @@ const Playlist = props => {
             </div>
             <div className='flex-playlist'>
                 {playlist.map((item,index)=>(
-                    <div className='track-container' id={item.id}>
+                    <div className='track-container' key={item.id}>
                             <Track item={item} key={index} />
                             {/* <div className='plus-container' onClick={()=>{props.track(item.id)}}> */}
                             <div className='btn-container' onClick={()=>{props.removePlaylist(item)}}>

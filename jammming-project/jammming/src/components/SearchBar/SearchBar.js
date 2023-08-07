@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import SearchResults from "../SearchResults/SearchResults";
-import TrackList from "../TrackList/TrackList";
 import "./SearchBar.scss";
 
 const SearchBar = (props) => {
@@ -29,7 +27,6 @@ const SearchBar = (props) => {
                     onClick={handleClick}
                     >Search</button>
             </form>
-           {/*<SearchResults word={word} />*/}
         </section>
     )
 }

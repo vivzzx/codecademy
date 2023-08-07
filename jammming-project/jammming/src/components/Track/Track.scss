@@ -11,6 +11,30 @@
     .img-track {
         width: 75px;
         height: 75px;
+        position: relative;
+
+        .img-audio {
+            width: 75px;
+            height: 75px;
+            //color: $blackA9;
+            opacity: 0.4;
+ 
+            background-image: url("../../assets/images/play.png");
+            background-size: contain;
+            
+            position: absolute;
+            transition: .6s;
+            //top: 0;
+            //z-index: 1;
+
+            &:hover {
+                background-image: url("../../assets/images/play.gif");
+                //background-size: contain;
+                transition: .5s;
+                opacity: .8;
+
+            }
+        }
     }
 }
 

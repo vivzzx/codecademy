@@ -9,20 +9,17 @@ const Starter = () => {
     const navigate = useNavigate()
 
     const toggle = async () => {
-        //setIsLogged(true)
         if (user === "") {
           const userData = await generateAcessToken()
-          //console.log("user data toggle: ",userData)
           setUser(userData)
         }
     }
-
 
     useEffect(() => {
     
       toggle()
 
-    }, []);
+    },);
 
 
     return (

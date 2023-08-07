@@ -1,14 +1,13 @@
-import React, {useState, useEffect, createConnection} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.scss';
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from '../Home/Home';
 import Login from "../Login/Login"
 import Starter from '../Starter/Starter';
-import { generateAcessToken, checkLogin } from '../../assets/helpers';
+import { checkLogin } from '../../assets/helpers';
 
 function App() {
   const [isLogged, setIsLogged] = useState(false)
-  const navigate = useNavigate()
   useEffect(() => {
     //generateAcessToken()
     setIsLogged(checkLogin())
