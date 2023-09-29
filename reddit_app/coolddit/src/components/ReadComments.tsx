@@ -3,16 +3,24 @@
 import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card'
 import { Avatar, AvatarIcon } from '@nextui-org/avatar'
 import React, { useEffect, useState } from 'react'
-Card
+import { dateFormat, timeComplete } from '@/libs/utils'
+
 
 const ReadComments = ( props ) => {
     const [comment, setComment] = useState({})
     const commentData = props
-    const { subreddit, author, body, ups } = props.comment
+    const { subreddit, author, body, ups, created_utc } = props.comment
 
+    const commentTimeStamp = timeComplete(created_utc)
+    const dateComment = new Date(commentTimeStamp)
+    const timeStampNow = Date.now()
+    const dateNow = new Date(timeStampNow)
+    const difference = dateComment - dateNow
     useEffect(() => {
         setComment(props)
-        console.log("teste eff:", props.comment.body)
+        //console.log("teste eff:", props.comment.body)
+        //console.log("dateComment: ", dateComment, "dateNow: ", dateNow)
+        console.log("diferenca: " difference)
     }, )
     
     
