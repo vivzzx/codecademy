@@ -30,5 +30,5 @@ export const timeComplete = (timeStamp:any) => {
     const hours = formatHours(date.getHours())
     const minutes = formatHours(date.getMinutes())
 
-    return `${year}-${month}-${day}T${hours}:${minutes}`
+    return `${year}-${month}-${day} ${hours}:${minutes}`
 } 

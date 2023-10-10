@@ -75,10 +75,36 @@ const ReadArticle = (props:any) => {
                                         flex gap-1 
                                         font-semibold text-sm
                                         text-zinc-500'>
-                                        <CommentBalloon className='w-5 h-5 fill-zinc-500' />
-                                        <p>{num_comments} comments</p>
+                                        {/* Upvotes Chip */}
+                                        <Chip
+                                            size='md'
+                                            variant='shadow'
+                                            classNames={{
+                                                base: "bg-teal-600 p-1",
+                                                content: "drop-shadow shadow-black text-white fill-white flex gap-2"
+                                            }}
+                                        >
+                                            <UpVoteImg className='w-5 h-5' />
+                                            {ups}
+                                            <DownVoteImg className='w-5 h-5' />
+                                        </Chip>
+                                        <Chip
+                                            size='md'
+                                            variant='shadow'
+                                            classNames={{
+                                                base: "bg-teal-600 p-1",
+                                                content: "drop-shadow shadow-black text-white fill-white flex gap-2"
+                                            }}
+                                            >
+                                            <CommentBalloon className='w-5 h-5' />
+                                            {num_comments}
+                                        </Chip>
+                                        
+                                        
+                                       {/*  <CommentBalloon className='w-5 h-5 fill-zinc-500' />
+                                        <p>{num_comments} comments</p> */}
                                         <div className='w-fit'>
-                                            {link_flair_text === null ? '' : <Chip color={link_flair_background_color} size='md'>{link_flair_text}</Chip>
+                                            {link_flair_text === undefined ? '' : <Chip color={link_flair_background_color} size='md'>{link_flair_text}</Chip>
                                             } 
                                         </div>
                                     </div>
@@ -89,7 +115,8 @@ const ReadArticle = (props:any) => {
                                 
                                 <ScrollShadow className=' h-[350px]'>
                                     {Object.values(comments).map((comment:any, index) => (
-                                        <ReadComments key={index} comment={comment.data} />
+                                        comment.data.body !== undefined && <ReadComments key={index} comment={comment.data} /> 
+                                        
                                     ))}
                                 </ScrollShadow>
                                 
