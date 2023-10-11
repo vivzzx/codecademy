@@ -102,7 +102,7 @@ export const DownVoteImg = (props: SVGProps<SVGSVGElement>) => (
     <path
       d="m19.36 11.81-.79-1.05a1 1 0 0 0-1.36-.24L15 12V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8l-2.21-1.48a1 1 0 0 0-1.36.24l-.79 1.05 6.13 4.77a2 2 0 0 0 2.46 0Z"
       style={{
-        fill: "#2ca9bc",
+        //fill: "#2ca9bc",
         strokeWidth: 2,
       }}
     />
@@ -138,7 +138,7 @@ export const UpVoteImg = (props: SVGProps<SVGSVGElement>) => (
     <path
       d="m19.36 11.81-.79-1.05a1 1 0 0 0-1.36-.24L15 12V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8l-2.21-1.48a1 1 0 0 0-1.36.24l-.79 1.05 6.13 4.77a2 2 0 0 0 2.46 0Z"
       style={{
-        fill: "#2ca9bc",
+        //fill: "#2ca9bc",
         strokeWidth: 2,
       }}
     />

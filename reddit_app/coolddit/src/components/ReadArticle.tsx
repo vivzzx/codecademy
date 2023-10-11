@@ -13,23 +13,42 @@ import { NewPost, Clock, CommentBalloon, DiscussionImg, UpVoteImg, DownVoteImg }
 import Link from 'next/link'
 import { Chip } from '@nextui-org/chip'
 import { ScrollShadow } from '@nextui-org/scroll-shadow'
+import Avatars from './ui/Avatars'
+import { comment } from 'postcss'
+import { avatar } from '@nextui-org/react'
+
 
 const ReadArticle = (props:any) => {
     const [content, setContent] = useState({})
     const [comments, setComments] = useState({})
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
+    const [avatarNum, setAvatarNum] = useState(0)
     
     const { title, ups, author, num_comments, created_utc, subreddit, subreddit_id, selftext, link_flair_text, link_flair_background_color } = content
     //const textContentBody = contentJson.data.children
     const userUrl = `https://www.reddit.com/user/${author}/`
     const imgUrl = about.data.icon_img
 
+    const defineImg = () => {
+        setAvatarNum(avatarNum + 1)
+        if (avatarNum === 17) {
+          setAvatarNum(0)
+        }
+      }
+
     useEffect(() => {
       setContent(contentJson[0].data.children[0].data)
       setComments(contentJson[1].data.children)
       //console.log("meu teste", comments)
+      
+      setAvatarNum(avatarNum + 1)
+      if (avatarNum === 17) {
+        setAvatarNum(0)
+      }
+      
     }, [contentJson])
-    
+
+
     
     return (
         <>
@@ -115,10 +134,10 @@ const ReadArticle = (props:any) => {
                                 
                                 <ScrollShadow className=' h-[350px]'>
                                     {Object.values(comments).map((comment:any, index) => (
-                                        comment.data.body !== undefined && <ReadComments key={index} comment={comment.data} /> 
-                                        
+                                        comment.data.body !== undefined && <ReadComments key={index} comment={comment.data} avatarNum={avatarNum + 1} /> 
                                     ))}
                                 </ScrollShadow>
+                                
                                 
                             </ModalBody>
                             <ModalFooter>

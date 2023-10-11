@@ -54,7 +54,7 @@ const Post = (props:any) => {
                             </h3>
                     </CardHeader>
                     {/* up votes aqui */}
-                    <div className='col-span-1 row-span-2 flex flex-col bg-slate-200 items-center justify-around text-sm text-cyan-900'>
+                    <div className='col-span-1 row-span-2 flex flex-col bg-slate-200 items-center justify-around text-sm text-cyan-600 fill-cyan-700'>
                         <div className='w-10'>
                             <UpVoteImg />
                         </div>
