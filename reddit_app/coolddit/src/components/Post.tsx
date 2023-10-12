@@ -8,6 +8,7 @@ import { Image } from "@nextui-org/image"
 import { dateFormat, timeFormat } from "../libs/utils";
 import { NewPost, Clock, CommentBalloon, DiscussionImg, UpVoteImg, DownVoteImg } from './ui/Icons';
 import ReadArticle from "./ReadArticle";
+import { id } from 'date-fns/locale';
 
 const Post = (props:any) => {
     const article = props.data
@@ -15,6 +16,7 @@ const Post = (props:any) => {
     const [imgError, setImgError] = useState(false)
     const [imgPost, setImgPost] = useState(article.thumbnail)
     const [content, setContent] = useState({})
+    const [activeVote, setActiveVote] = useState(null)
     
     const date = dateFormat(article.created_utc)
     const time = timeFormat(article.created_utc)
@@ -33,6 +35,17 @@ const Post = (props:any) => {
         }
         contentJson += '.json'
         setContent(contentJson)
+    }
+
+    const textToggle = () => {
+        if (activeVote === null) {
+            return 'text-slate-600'
+        } 
+        if (activeVote === 'up') {
+            return 'text-lime-500'
+        } else {
+            return 'text-red-500'
+        }
     }
 
     useEffect(() => {
@@ -54,13 +67,15 @@ const Post = (props:any) => {
                             </h3>
                     </CardHeader>
                     {/* up votes aqui */}
-                    <div className='col-span-1 row-span-2 flex flex-col bg-slate-200 items-center justify-around text-sm text-cyan-600 fill-cyan-700'>
-                        <div className='w-10'>
-                            <UpVoteImg />
+                    <div className='col-span-1 row-span-2 flex flex-col bg-slate-200 items-center justify-around text-sm fill-white font-semibold'>
+                        <div className='w-10 hover:fill-green-500'>
+                            <UpVoteImg className={activeVote === 'up' ? 'fill-lime-500' : ''} onClick={() => setActiveVote('up')} />
                         </div>
-                        <p>{article.ups}</p>
-                        <div className='w-10'>
-                            <DownVoteImg />
+                        <p className={textToggle()}>
+                            {article.ups}
+                        </p>
+                        <div className='w-10 hover:fill-red-500'>
+                            <DownVoteImg className={activeVote === 'down' ? 'fill-red-500' : ''} onClick={() => setActiveVote('down')} />
                         </div>       
                     </div>
                         <CardBody className='col-span-9 row-start-2 flex flex-row w-full p-3'>
@@ -86,7 +101,7 @@ const Post = (props:any) => {
                                     <p className='flex gap-1 mb-1 text-sm'>
                                         {<NewPost className='w-4 h-4' />}
                                         Posted by {
-                                        <Link href={`https://www.reddit.com/user/${article.author}/`} className='text-cyan-900 font-medium'>
+                                        <Link href={`https://www.reddit.com/user/${article.author}/`} className='text-cyan-800 font-medium'>
                                         {article.author}
                                         </Link>}
                                     </p>
@@ -101,7 +116,7 @@ const Post = (props:any) => {
                                     <CommentBalloon className='w-4 h-4' />
                                     <p> {article.num_comments} comments</p>
                                 </div>
-                                <div className='pt-2'>
+                                <div className='pt-2 mt-1'>
                                     <ReadArticle articleContent={content} />
                                 </div>                       
                             </div>

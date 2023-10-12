@@ -6,6 +6,7 @@ import React, { use, useEffect, useState } from 'react'
 import { dateFormat, timeComplete } from '@/libs/utils'
 import { DownVoteImg, UpVoteImg } from './ui/Icons'
 import { avatar } from '@nextui-org/react'
+import { formatDistanceToNow, fromUnixTime } from "date-fns";
 
 const ReadComments = ( props:any ) => {
     const [comment, setComment] = useState({})
@@ -16,8 +17,8 @@ const ReadComments = ( props:any ) => {
     const { subreddit, author, body, ups, created_utc } = props.comment
 
 
-    const commentTimeStamp = timeComplete(created_utc)
-
+    const commentTimeStamp = fromUnixTime(created_utc)
+    const timeAgo = formatDistanceToNow(commentTimeStamp, { addSuffix: true })
 
     useEffect(() => {
         setComment(props)
@@ -44,7 +45,7 @@ const ReadComments = ( props:any ) => {
                     </div>
                     <div className="flex gap-1 items-center">
                         <h4 className='font-semibold text-teal-700'>{author}</h4>
-                        <p className='text-zinc-400 text-sm'>- {commentTimeStamp}</p>
+                        <p className='text-zinc-400 text-sm'>- {timeAgo}</p>
                     </div>
                 </CardHeader>
                 <CardBody className="px-3 py-0 text-small text-default-400">

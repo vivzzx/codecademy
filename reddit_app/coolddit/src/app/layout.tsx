@@ -5,6 +5,7 @@ import {Providers} from "./providers";
 import { Inter } from 'next/font/google'
 import Navbar from "../components/ui/Navbar";
 import PostFeed from '@/components/PostFeed';
+import ContactArea from '@/components/ui/ContactArea';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
           <div className='container max-w-7xl mx-auto h-full pt-12'>
             {children}
             <PostFeed />
+            <ContactArea />
           </div>
         </Providers>
       </body>
